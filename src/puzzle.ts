@@ -63,7 +63,7 @@ export class Puzzle {
     this.solvedState = Array.from({ length: this.gridSize * this.gridSize - 1 }, (_, i) => i + 1);
     this.solvedState.push(null);
     this.tiles = [...this.solvedState];
-    //this.shuffle();
+    this.shuffle();
     this.render();
   }
 
