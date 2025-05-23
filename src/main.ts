@@ -16,7 +16,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <option value="marioluigi">Mario x Luigi</option>
       </select>
       <button id="shuffleBtn">Shuffle</button>
-       <button id="previewBtn">Preview</button>
+       <button id="previewBtn">Hint</button>
 
     </div>
     <div id="puzzle" class="grid"></div>
