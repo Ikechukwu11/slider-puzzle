@@ -15,11 +15,11 @@ export class Puzzle {
   };
   private gridSize = 4;
   private tileSize = 100;
-  private accentColors: Record<ImageKey, string> = {
-    mario: '#ff4d4d',
-    luigi: '#4dff88',
-    marioluigi:'#121221',//'linear-gradient(45deg, #ff4d4d, #4dff88)',
-  };
+  // private accentColors: Record<ImageKey, string> = {
+  //   mario: '#ff4d4d',
+  //   luigi: '#4dff88',
+  //   marioluigi:'#121221',//'linear-gradient(45deg, #ff4d4d, #4dff88)',
+  // };
 
   constructor(containerId: string) {
     const el = document.getElementById(containerId);
@@ -88,6 +88,8 @@ export class Puzzle {
       const y = Math.floor(index / this.gridSize) * this.tileSize;
       div.style.left = `${x}px`;
       div.style.top = `${y}px`;
+      const imageSelect = document.getElementById('imageSelect') as HTMLSelectElement;
+      const previewBtn = document.getElementById('previewBtn')!;
 
       if (tile === null) {
         div.classList.add('empty');
