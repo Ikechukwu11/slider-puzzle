@@ -29,9 +29,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </div>
 `;
 
+window.onload = () => {
 // Initialize puzzle logic
 const puzzle = new Puzzle('puzzle');
-
 const shuffleBtn = document.getElementById('shuffleBtn') as HTMLButtonElement;
 const modeSelect = document.getElementById('modeSelect') as HTMLSelectElement;
 const imageSelect = document.getElementById('imageSelect') as HTMLSelectElement;
@@ -41,9 +41,10 @@ const previewImage = document.getElementById('previewImage') as HTMLImageElement
 const closePreview = document.getElementById('closePreview')!;
 const titleDiv = document.getElementById('title')!;
 
-window.onload = () => {
+
   titleDiv.textContent = 'Number Slide Puzzle';
-};
+  
+
 
 // Event listeners
 shuffleBtn.addEventListener('click', () => puzzle.shuffle());
@@ -84,6 +85,8 @@ previewBtn.addEventListener('click', () => {
 closePreview.addEventListener('click', () => {
   previewModal.classList.add('hidden');
 });
+
+};
 
 type Theme = 'number' | 'mario' | 'luigi' | 'marioluigi';
 
