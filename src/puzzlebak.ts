@@ -14,6 +14,12 @@ export class Puzzle {
     marioluigi: '/mario-luigi.jpg',
   };
   private gridSize = 4;
+  private tileSize = 100;
+  // private accentColors: Record<ImageKey, string> = {
+  //   mario: '#ff4d4d',
+  //   luigi: '#4dff88',
+  //   marioluigi:'#121221',//'linear-gradient(45deg, #ff4d4d, #4dff88)',
+  // };
 
   constructor(containerId: string) {
     const el = document.getElementById(containerId);
@@ -63,20 +69,32 @@ export class Puzzle {
     this.solvedState = Array.from({ length: this.gridSize * this.gridSize - 1 }, (_, i) => i + 1);
     this.solvedState.push(null);
     this.tiles = [...this.solvedState];
-    //this.shuffle();
     this.render();
   }
 
   private render() {
     this.container.innerHTML = '';
+    //this.container.style.width = `${this.gridSize * this.tileSize}px`;
+   //this.container.style.height = `${this.gridSize * this.tileSize}px`;
+   //this.container.style.width = '100vmin';
+//this.container.style.height = '100vmin'; 
+   this.container.style.position = 'relative';
+  // this.container.style.display = 'grid';
+//this.container.style.gridTemplateColumns = `repeat(${this.gridSize}, 1fr)`;
+//this.container.style.gridTemplateRows = `repeat(${this.gridSize}, 1fr)`;
+//this.container.style.gap = '4px';
 
     this.tiles.forEach((tile, index) => {
       const div = document.createElement('div');
       div.className = 'tile';
+      div.style.width = div.style.height = `${this.tileSize}px`;
+      //div.style.width = div.style.height = `${100 / this.gridSize}%`; 
+      //div.style.position = 'absolute';
 
-      
-    
-      
+      const x = (index % this.gridSize) * this.tileSize;
+      const y = Math.floor(index / this.gridSize) * this.tileSize;
+      div.style.left = `${x}px`;
+      div.style.top = `${y}px`;
       const imageSelect = document.getElementById('imageSelect') as HTMLSelectElement;
       const previewBtn = document.getElementById('previewBtn')!;
 
@@ -87,12 +105,6 @@ export class Puzzle {
         div.dataset.index = String(index);
         div.addEventListener('click', () => this.move(index));
 
-        const tileX = ((tile - 1) % this.gridSize);
-        const tileY = Math.floor((tile - 1) / this.gridSize);
-div.style.backgroundSize = `${this.gridSize * 100}%`;
-      div.style.backgroundPosition = `${(tileX / (this.gridSize - 1)) * 100}% ${(tileY / (this.gridSize - 1)) * 100}%`;
-      div.style.backgroundRepeat = 'no-repeat';
-
         if (this.mode === 'number') {
           previewBtn.style.display = 'none';
           imageSelect.style.display = 'none';
@@ -100,17 +112,11 @@ div.style.backgroundSize = `${this.gridSize * 100}%`;
         } else if (this.mode === 'image') {
           previewBtn.style.display = 'inline-block';
           imageSelect.style.display = 'inline';
-          // div.style.backgroundImage = `url(${this.image.src})`;
-          //div.style.backgroundSize = `${this.gridSize * this.tileSize}px`;
-          const tileX = ((tile - 1) % this.gridSize);
-          const tileY = Math.floor((tile - 1) / this.gridSize);
-
-        div.style.backgroundImage = `url(${this.image.src})`;
-        div.style.backgroundSize = `${this.gridSize * 100}%`;
-        div.style.backgroundPosition = `${(tileX / (this.gridSize - 1)) * 100}% ${(tileY / (this.gridSize - 1)) * 100}%`;
-        div.style.backgroundRepeat = 'no-repeat';
-
-          
+          const tileX = ((tile - 1) % this.gridSize) * this.tileSize;
+          const tileY = Math.floor((tile - 1) / this.gridSize) * this.tileSize;
+          div.style.backgroundImage = `url(${this.image.src})`;
+          div.style.backgroundSize = `${this.gridSize * this.tileSize}px`;
+          div.style.backgroundPosition = `-${tileX}px -${tileY}px`;
         }
       }
 

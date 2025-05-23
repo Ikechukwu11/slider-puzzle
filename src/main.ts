@@ -3,9 +3,9 @@ import { Puzzle } from './puzzle';
 
 // Set up the app root content
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
+  <div id="puzzleContainer">
     <h1 id="title">Sliding Puzzle</h1>
-    <div style="margin-bottom: 1rem;">
+    <div id="controls" style="margin-bottom: 1rem;">
       <select id="modeSelect">
         <option value="number" selected>Number</option>
         <option value="image">Image</option>
@@ -16,7 +16,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <option value="marioluigi">Mario x Luigi</option>
       </select>
       <button id="shuffleBtn">Shuffle</button>
-       <button id="previewBtn">Hint</button>
+      <button id="previewBtn">Hint</button>
 
     </div>
     <div id="puzzle" class="grid"></div>
@@ -26,7 +26,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <img id="previewImage" />
       </div>
     </div>
-  </div>
+    </div>
 `;
 
 // Initialize puzzle logic
