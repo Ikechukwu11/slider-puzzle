@@ -90,7 +90,8 @@ export class Puzzle {
       div.style.top = `${y}px`;
 
       if (tile === null) {
-        div.style.background = this.accentColors[this.imageKey];
+        div.classList.add('empty');
+        //div.style.background = this.accentColors[this.imageKey];
       } else {
         div.dataset.index = String(index);
         div.addEventListener('click', () => this.move(index));
