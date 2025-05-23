@@ -13,6 +13,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <li><strong>Choose an Image:</strong> (Mario, Luigi, or Both - in Image Mode).</li>
     <li><strong>Shuffle the Tiles:</strong> Click the <em>Shuffle</em> button to begin.</li>
     <li><strong>Move the Tiles:</strong> Click a tile next to the empty space.</li>
+    <li><strong>Hint:</strong> Click the <em>Hint</em> button to see the current puzzle sequence.</li>
     <li><strong>Solve the Puzzle:</strong> Complete the image or number sequence!</li>
   </ol>
   <p>💡 You’ll get a <strong>“🎉 You solved it!”</strong> popup when you finish!</p>
