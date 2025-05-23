@@ -5,6 +5,20 @@ import { Puzzle } from './puzzle';
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div id="puzzleContainer">
     <h1 id="title">Sliding Puzzle</h1>
+    <button id="toggleInstructions" class="instruction-toggle">📘 Show Instructions</button>
+<div id="instructions" class="instructions" style="max-height: 0; overflow: hidden;">
+  <h2>🧩 How to Play</h2>
+  <ol>
+    <li><strong>Choose a Mode:</strong> Number or Image.</li>
+    <li><strong>Choose an Image:</strong> (Mario, Luigi, or Both - in Image Mode).</li>
+    <li><strong>Shuffle the Tiles:</strong> Click the <em>Shuffle</em> button to begin.</li>
+    <li><strong>Move the Tiles:</strong> Click a tile next to the empty space.</li>
+    <li><strong>Solve the Puzzle:</strong> Complete the image or number sequence!</li>
+  </ol>
+  <p>💡 You’ll get a <strong>“🎉 You solved it!”</strong> popup when you finish!</p>
+</div>
+
+
     <div id="controls" style="margin-bottom: 1rem;">
       <select id="modeSelect">
         <option value="number" selected>Number</option>
@@ -40,6 +54,8 @@ const previewModal = document.getElementById('previewModal')!;
 const previewImage = document.getElementById('previewImage') as HTMLImageElement;
 const closePreview = document.getElementById('closePreview')!;
 const titleDiv = document.getElementById('title')!;
+const toggleBtn = document.getElementById('toggleInstructions')!;
+const instructions = document.getElementById('instructions')!;
 
 
   titleDiv.textContent = 'Number Slide Puzzle';
@@ -84,6 +100,12 @@ previewBtn.addEventListener('click', () => {
 
 closePreview.addEventListener('click', () => {
   previewModal.classList.add('hidden');
+});
+
+toggleBtn.addEventListener('click', () => {
+  instructions.classList.toggle('open');
+  const isOpen = instructions.classList.contains('open');
+  toggleBtn.textContent = isOpen ? '📕 Hide Instructions' : '📘 Show Instructions';
 });
 
 };
