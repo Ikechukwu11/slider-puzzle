@@ -17,6 +17,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     <li><strong>Solve the Puzzle:</strong> Complete the image or number sequence!</li>
   </ol>
   <p>💡 You’ll get a <strong>“🎉 You solved it!”</strong> popup when you finish!</p>
+  <p>Have Fun! 🎮</p>
 </div>
 
 
